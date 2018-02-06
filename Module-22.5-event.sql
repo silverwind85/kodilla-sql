@@ -21,7 +21,7 @@ create view bestsellers_count as
     do begin 
 		call UpdateBestSellers();
 		insert into stats(stat_date,stat,value)
-		values(curdate(),'bestsellers',(select bestsellers_count from bestsellers_count));
+		select curdate(),'bestsellers', bestsellers_count from bestsellers_count;
 	end|
     delimiter ;
     
